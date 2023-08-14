@@ -1,0 +1,33 @@
+---
+title: "root"
+format: html
+editor: visual
+execute: 
+  warning: false
+---
+
+```{r}
+library(tidyverse)
+```
+
+Lets make some file paths - Read in data
+
+```{r}
+# Dont use read.csv use read_csv it makes some assumptions
+
+energy <- read_csv("data/us_energy.csv")
+```
+
+Create a line chart of energy over time, with color based on the energy type
+
+```{r}
+ggplot(data = energy, aes(x = year, y = energy$quadrillion_btu)) + geom_line()
+
+# weird stepsize we forgot to mention the grouping by the type 
+# we do that by adding group = in aes()
+ggplot(data = energy, aes(x = year, y = energy$quadrillion_btu,group = type, color = year)) + geom_line()
+
+## Or set the color aesthetic to the geom 
+
+ggplot(data = energy, aes(x = year, y = energy$quadrillion_btu)) + geom_line(aes(color = type))
+```
