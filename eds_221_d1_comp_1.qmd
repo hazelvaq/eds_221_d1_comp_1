@@ -4,4 +4,19 @@ format: html
 editor: visual
 ---
 
-## 
+## How to point to multiple files 
+
+This file is in Analysis and how would you point to the Data file that is in the file before this one
+
+```{r}
+#This will not work bc the file is upstream (this is asking to look downstream)
+energy2 <- read_csv("../data/us_energy.csv")
+
+# This will allow you to go back one folder
+energy2 <- read_csv("../data/us_energy.csv")
+
+# You can do this for multiple back file paths "../../../"
+
+
+
+```
